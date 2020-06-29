@@ -3,6 +3,7 @@ package ue06_serialcircuit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Serianschaltung.
@@ -79,7 +80,19 @@ public class SerialCircuit {
     
     @Override
     public String toString () {
-        return "not implemented yet";
+        final StringBuilder sb = new  StringBuilder();
+        sb.append("SerialCircuit (").append(components.size()).append(" Components): { ");
+        boolean first = true;
+        for (Component c : components) {
+            if (first) {
+                first = false;
+            } else {
+                sb.append(", ");
+            }
+            sb.append(c.getId()).append("=").append(c.formattedValue(Locale.ENGLISH));
+        }
+        sb.append(" }");
+        return sb.toString();
     }
     
     
